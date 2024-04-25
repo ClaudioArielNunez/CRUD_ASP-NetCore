@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CRUD_1.Models.Dominio
+﻿namespace CRUD_1.Models
 {
-    public class Empleado
+    public class AddEmpleadoViewModel
     {
-        public Guid Id { get; set; }
-        [Required]
         public string Nombre { get; set; }
         public string Email { get; set; }
         public long Salarry { get; set; }

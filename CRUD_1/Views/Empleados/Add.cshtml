@@ -1,0 +1,29 @@
+﻿@model CRUD_1.Models.AddEmpleadoViewModel
+@{
+
+}
+<h2>Agregar Empleado</h2>
+<form method="post" action="Add" class="mt-5">
+    <div class="mb-3">
+        <label for="" class="form-label">Nombre</label>
+        <input type="text" class="form-control" asp-for="Nombre">        
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="Email">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Salario</label>
+        <input type="number" class="form-control" asp-for="Salarry">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" asp-for="FechaNacimiento">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Departamento</label>
+        <input type="text" class="form-control" asp-for="Departamento">
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+</form>
