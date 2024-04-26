@@ -7,3 +7,4 @@
  - EntityFrameworkCore.SqlServer 7.0.0
  - EntityFrameworkCore.Tools 7.0.0
  - Modelo Code First
+ - Modelo Vista Controlador
