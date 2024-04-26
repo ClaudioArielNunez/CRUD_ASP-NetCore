@@ -1,12 +1,18 @@
-﻿@model CRUD_1.Models.AddEmpleadoViewModel
+﻿@model CRUD_1.Models.UpdateEmpleadoViewModel
 @{
-
+    ViewData["Title"] = "Detalle";
 }
-<h2>Agregar Empleado</h2>
-<form method="post" action="Add" class="mt-5">
-    <div class="mb-3">        
+
+<h2>Editar Empleado</h2>
+<form method="post" action="View" class="mt-5">
+    @* Agregamos el id solo lectura*@
+    <div class="mb-3">
+        <label for="" class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly>
+    </div>
+    <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input type="text" class="form-control" asp-for="Nombre">        
+        <input type="text" class="form-control" asp-for="Nombre">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Email</label>
@@ -24,6 +30,6 @@
         <label for="" class="form-label">Departamento</label>
         <input type="text" class="form-control" asp-for="Departamento">
     </div>
-   
+
     <button type="submit" class="btn btn-primary">Aceptar</button>
 </form>

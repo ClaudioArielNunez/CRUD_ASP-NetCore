@@ -1,0 +1,44 @@
+﻿@model List<CRUD_1.Models.Dominio.Empleado>
+@{
+    ViewData["Title"] = "Lista";
+}
+
+<h2>Empleados</h2>
+@if (Model is not null )
+{
+    <table class="table table-bordered mt-5">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Salario</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Departamento</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.Id</td>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Email</td>
+                    <td>@empleado.Salarry</td>
+                    <td>@empleado.FechaNacimiento.ToShortDateString()</td>
+                    <td>@empleado.Departamento</td>
+                    <td>
+                        <a href="Empleados/View/@empleado.Id">View</a>
+                        @* <a href="@Url.Action("View","Empleados",new{id=empleado.Id})">Ver</a> *@
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}else
+{
+   <h3>La lista no se pudo cargar...</h3>
+}
+
