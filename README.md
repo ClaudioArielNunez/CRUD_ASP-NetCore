@@ -1,0 +1,8 @@
+##  CRUD Básico - ASP NET CORE
+
+### Tecnologías utilizadas:
+ - Se utilizó Programación Orientada a Objetos.
+ - NET Core 6.0
+ - Microsoft SQL Server
+ - EntityFrameworkCore.SqlServer 7.0.0
+ - EntityFrameworkCore.Tools 7.0.0
