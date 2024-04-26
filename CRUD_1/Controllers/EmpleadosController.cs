@@ -4,6 +4,7 @@ using CRUD_1.Models.Dominio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 
 namespace CRUD_1.Controllers
 {
@@ -63,7 +64,46 @@ namespace CRUD_1.Controllers
                     FechaNacimiento = empleado.FechaNacimiento,
                     Departamento = empleado.Departamento
                 };
-                return View(modelo);
+                //return await Task.Run(() => View("View", modelo));
+                //Este error se da por la ambiguedad del nombre
+                return View("View", modelo); 
+                //return View(modelo);
+
+
+            }
+            return RedirectToAction("Index");            
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> View(UpdateEmpleadoViewModel modelo)
+        {
+            var empleado = await mvcDbContext.Empleados.FindAsync(modelo.Id);
+            if(empleado != null)
+            {
+                //Si no es null actualizamos
+                empleado.Nombre = modelo.Nombre;
+                empleado.Email = modelo.Email;
+                empleado.Salarry = modelo.Salarry;
+                empleado.FechaNacimiento = modelo.FechaNacimiento;
+                empleado.Departamento = modelo.Departamento;
+                //guardamos
+                await mvcDbContext.SaveChangesAsync();
+                //mostramos en el index
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(UpdateEmpleadoViewModel modelo)
+        {
+            var empleado = await mvcDbContext.Empleados.FirstOrDefaultAsync(x => x.Id == modelo.Id);
+            if (empleado != null)
+            {
+                mvcDbContext.Empleados.Remove(empleado);
+                //metodo remove no posee un metodo asyncronico
+                await mvcDbContext.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return RedirectToAction("Index");            
         }
